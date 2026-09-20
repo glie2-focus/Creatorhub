@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CreatorHub — Prototype</title>
+<style>
+:root{--bg:#0b0d12;--card:#141821;--muted:#9ba3b4;--text:#f6f7fb;--accent:#8b5cf6;--line:#252a36}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial;background:var(--bg);color:var(--text)}
+header{height:68px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 5%;gap:24px;position:sticky;top:0;background:#0b0d12ee;backdrop-filter:blur(10px);z-index:5}
+.logo{font-weight:800;font-size:21px}.logo span{color:#a78bfa}nav{display:flex;gap:18px;margin-left:auto}nav a{color:#cbd0dc;text-decoration:none;font-size:14px}.btn{border:0;border-radius:10px;padding:11px 16px;font-weight:700;cursor:pointer}.primary{background:var(--accent);color:#fff}.ghost{background:#1b202b;color:#fff}
+main{max-width:1180px;margin:auto;padding:40px 5%}.hero{padding:42px 0 30px}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1;margin:0 0 18px}.hero p{color:var(--muted);max-width:650px;font-size:17px;line-height:1.6}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}.section{margin-top:35px}.section h2{margin-bottom:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}.thumb{height:150px;background:linear-gradient(135deg,#252b3a,#4c3b72);display:flex;align-items:center;justify-content:center;font-size:38px}.body{padding:15px}.body h3{margin:0 0 7px;font-size:16px}.body p{margin:0;color:var(--muted);font-size:13px}.pill{display:inline-block;margin-top:12px;padding:5px 8px;background:#242a37;border-radius:999px;color:#cbd0dc;font-size:11px}
+footer{border-top:1px solid var(--line);margin-top:60px;padding:28px 5%;color:var(--muted);font-size:13px}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.show{display:flex}.modalbox{width:min(480px,100%);background:#151923;border:1px solid var(--line);border-radius:18px;padding:25px}.modalbox h2{margin-top:0}.field{width:100%;padding:12px;margin:7px 0 14px;background:#0e1118;border:1px solid #303646;border-radius:10px;color:white}.close{float:right;background:none;border:0;color:#aaa;font-size:22px;cursor:pointer}
+.notice{padding:12px 14px;border:1px solid #40365c;background:#171426;border-radius:12px;color:#c9bfff;font-size:13px;margin-top:15px}
+@media(max-width:650px){nav a{display:none}header{padding:0 4%}main{padding:25px 4%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Creator<span>Hub</span></div>
+  <nav><a href="#discover">Discover</a><a href="#creators">Creators</a><a href="#about">About</a></nav>
+  <button class="btn ghost" onclick="openModal('login')">Log in</button>
+  <button class="btn primary" onclick="openModal('signup')">Join</button>
+</header>
+
+<main>
+<section class="hero">
+  <h1>Your content.<br><span style="color:#a78bfa">Your audience.</span></h1>
+  <p>A browser-ready prototype for a creator platform where verified adult creators can publish permitted, non-explicit content, build an audience and manage their profiles.</p>
+  <div class="actions">
+    <button class="btn primary" onclick="openModal('signup')">Create account</button>
+    <button class="btn ghost" onclick="document.getElementById('discover').scrollIntoView({behavior:'smooth'})">Explore creators</button>
+  </div>
+  <div class="notice">18+ platform prototype • Creator verification and content moderation would be required before production.</div>
+</section>
+
+<section class="section" id="discover">
+<h2>Discover</h2>
+<div class="grid">
+  <article class="card"><div class="thumb">▶</div><div class="body"><h3>Behind the Scenes</h3><p>Creative studio session</p><span class="pill">Video</span></div></article>
+  <article class="card"><div class="thumb">✦</div><div class="body"><h3>Creator Diary</h3><p>Weekly lifestyle update</p><span class="pill">Lifestyle</span></div></article>
+  <article class="card"><div class="thumb">●</div><div class="body"><h3>Photography Set</h3><p>Portrait photography</p><span class="pill">Photography</span></div></article>
+  <article class="card"><div class="thumb">♫</div><div class="body"><h3>Studio Sessions</h3><p>Music and entertainment</p><span class="pill">Entertainment</span></div></article>
+</div>
+</section>
+
+<section class="section" id="creators">
+<h2>Featured creators</h2>
+<div class="grid">
+  <article class="card"><div class="body"><h3>@creator_one</h3><p>12.4K followers</p><button class="btn primary" style="margin-top:14px" onclick="this.textContent='Following ✓'">Follow</button></div></article>
+  <article class="card"><div class="body"><h3>@creator_two</h3><p>8.7K followers</p><button class="btn primary" style="margin-top:14px" onclick="this.textContent='Following ✓'">Follow</button></div></article>
+  <article class="card"><div class="body"><h3>@creator_three</h3><p>5.2K followers</p><button class="btn primary" style="margin-top:14px" onclick="this.textContent='Following ✓'">Follow</button></div></article>
+</div>
+</section>
+</main>
+
+<footer id="about">CreatorHub prototype • Demo only. Production would need secure authentication, age/identity verification, moderation, storage, payments, privacy controls and legal compliance.</footer>
+
+<div class="modal" id="modal">
+ <div class="modalbox">
+  <button class="close" onclick="closeModal()">×</button>
+  <div id="modalContent"></div>
+ </div>
+</div>
+
+<script>
+function openModal(type){
+ const c=document.getElementById('modalContent');
+ if(type==='signup') c.innerHTML=`<h2>Create your account</h2><p style="color:#9ba3b4">Join as a creator or viewer.</p><input class="field" placeholder="Display name"><input class="field" type="email" placeholder="Email"><input class="field" type="password" placeholder="Password"><label style="font-size:13px"><input type="checkbox"> I confirm I am 18 or older.</label><br><button class="btn primary" style="margin-top:18px" onclick="alert('Demo account created!')">Create account</button>`;
+ else c.innerHTML=`<h2>Welcome back</h2><input class="field" type="email" placeholder="Email"><input class="field" type="password" placeholder="Password"><button class="btn primary" onclick="alert('Demo login successful!')">Log in</button>`;
+ document.getElementById('modal').classList.add('show');
+}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+</script>
+</body>
+</html>
