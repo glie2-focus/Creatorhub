@@ -1,91 +1,55 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CreatorHub — For Creators</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GLIE UNFILTERED - No Filter</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--card:#111;--line:#222;--pink:#ff2d8d;--pink2:#ff5aa5;--white:#fff;--muted:#999}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,system-ui,Arial}
-header{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);z-index:10}
-.logo{font-weight:900;font-size:22px}.logo span{color:var(--pink)}
-nav a{color:var(--muted);text-decoration:none;margin-left:20px;font-size:14px;font-weight:600;cursor:pointer}
-.btn{background:var(--pink);color:white;border:0;padding:11px 20px;border-radius:999px;font-weight:800;cursor:pointer}
-.btn:hover{background:var(--pink2)} .btn-outline{background:transparent;border:1px solid var(--line);color:var(--white)}
-main{max-width:1180px;margin:auto;padding:50px 24px}
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
-.hero h1{font-size:54px;line-height:.95;letter-spacing:-2px;margin:0} .hero h1 b{color:var(--pink)}
-.hero p{color:var(--muted);font-size:18px;line-height:1.5}
-.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:20px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
-.creator{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#0a0a0a;transition:.2s}
-.creator:hover{transform:translateY(-4px);border-color:var(--pink)}
-.creator img{width:100%;height:180px;object-fit:cover}
-.creator .info{padding:14px}
-.tag{display:inline-block;background:#1a1a1a;border:1px solid var(--line);padding:4px 10px;border-radius:999px;font-size:11px;margin-top:8px;color:var(--muted)}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
-.modal.active{display:flex}
-.modal-box{background:#111;border:1px solid #333;border-radius:24px;padding:28px;max-width:400px;width:100%}
-.modal-box input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #333;background:#000;color:#fff;margin:8px 0}
-footer{border-top:1px solid var(--line);margin-top:60px;padding:30px;text-align:center;color:var(--muted);font-size:13px}
-@media(max-width:850px){.hero{grid-template-columns:1fr}.hero h1{font-size:36px}.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:550px){.grid{grid-template-columns:1fr} nav a{display:none}}
+:root{--gold:#FFC400;--bg:#050505;--line:#222}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Inter,sans-serif}
+header{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);z-index:10}
+.logo{font-family:Anton;font-size:22px;letter-spacing:1px} .logo span{color:var(--gold)}
+.btn{background:var(--gold);color:#000;border:0;padding:11px 18px;border-radius:999px;font-weight:900;cursor:pointer}
+.hero{max-width:1200px;margin:auto;padding:40px 16px;text-align:center}
+.hero h1{font-family:Anton;font-size:56px;line-height:.9;margin:0;text-transform:uppercase} .hero h1 .g{color:var(--gold)}
+.grid{max-width:1200px;margin:auto;padding:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#111;cursor:pointer} .card:hover{border-color:var(--gold)}
+.card img{width:100%;height:300px;object-fit:cover;display:block}
+.card .t{padding:12px} .card .t h4{margin:0;font-family:Anton;font-size:18px} .card .t small{color:#999}
+.tag{color:var(--gold);font-weight:900;font-size:11px}
+#loader{padding:40px;text-align:center;color:var(--gold);font-weight:900}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:30px;text-align:center;color:#777;font-size:13px}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}.hero h1{font-size:38px}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header>
-<div class="logo">Creator<span>Hub</span></div>
-<nav><a onclick="scrollToSec('creators')">Discover</a><a onclick="scrollToSec('creators')">Creators</a><a onclick="openJoin()">Join</a></nav>
-<button class="btn" onclick="openJoin()">Join Now</button>
-</header>
-<main>
-<div class="hero">
-<div>
-<h1>Where <b>Creators</b><br>Meet Brands<br>& Grow</h1>
-<p>CreatorHub is Black & Pink platform for entertainment. Discover top creators, collab, and monetize.</p>
-<div style="display:flex;gap:12px;margin-top:20px"><button class="btn" onclick="scrollToSec('creators')">Explore Creators</button><button class="btn btn-outline" onclick="openBrand()">For Brands</button></div>
-</div>
-<div class="card">
-<h3 style="margin:0 0 10px 0">🔥 Trending Now</h3>
-<p style="color:var(--muted);font-size:14px">1.5K+ creators joined this week. Pink is the new power.</p>
-<div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
-<span class="tag">#Dance</span><span class="tag">#Comedy</span><span class="tag">#Beauty</span><span class="tag">#Music</span><span class="tag">#Rwanda</span>
-</div>
-</div>
-</div>
-<h2 id="creators" style="margin-top:50px">Featured Creators</h2>
-<div class="grid">
-<div class="creator" onclick="openJoin()"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600"><div class="info"><h4>Aline Keza</h4><small>1.2M • Beauty</small><br><span class="tag">Kigali • Hire me</span></div></div>
-<div class="creator" onclick="openJoin()"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600"><div class="info"><h4>Melody Crew</h4><small>890K • Music</small><br><span class="tag">Comedy</span></div></div>
-<div class="creator" onclick="openJoin()"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600"><div class="info"><h4>Diana</h4><small>2.3M • Dance</small><br><span class="tag">Viral • Hire</span></div></div>
-</div>
-</main>
-
-<div id="joinModal" class="modal" onclick="if(event.target==this)closeJoin()">
-<div class="modal-box">
-<h2 style="margin:0">Join CreatorHub 🖤💗</h2>
-<p style="color:var(--muted);font-size:14px">Injira muri community y'abahanga</p>
-<input id="name" placeholder="Izina ryawe">
-<input id="email" placeholder="Email cyangwa Phone">
-<input id="niche" placeholder="Niche yawe (Dance, Comedy...)">
-<button class="btn" style="width:100%;margin-top:12px" onclick="submitJoin()">Join Now — Free</button>
-<button class="btn btn-outline" style="width:100%;margin-top:8px" onclick="closeJoin()">Cancel</button>
-</div>
-</div>
-
-<footer>© 2026 CreatorHub — Built in Kigali. Black 🖤 Pink 💗 Power.</footer>
-
+<header><div class="logo">👑 GU <span>GLIE UNFILTERED</span></div><button class="btn" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">SUBSCRIBE</button></header>
+<div class="hero"><h1>REAL PEOPLE.<br><span class="g">REAL STORIES.</span><br>NO FILTER.</h1><p style="color:#999">GLIE UNFILTERED auto-loads your photos from GitHub. No rename needed!</p></div>
+<div id="loader">⏳ Loading your 9 photos... 👑</div>
+<div class="grid" id="grid"></div>
+<div id="join" style="max-width:400px;margin:40px auto;padding:20px;border:1px solid #333;border-radius:20px;background:#111"><h3 style="font-family:Anton;margin:0">JOIN FAMILY 👑</h3><input id="n" placeholder="Izina" style="width:100%;padding:12px;margin:10px 0;border-radius:10px;border:1px solid #333;background:#000;color:#fff"><button class="btn" style="width:100%" onclick="alert('Murakaza neza '+(document.getElementById('n').value||'King')+' muri GLIE FAMILY! 👑🔥')">JOIN NOW</button></div>
+<footer>© 2026 GLIE UNFILTERED 👑 — Same Vision Bigger Dreams — Kigali</footer>
 <script>
-function scrollToSec(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
-function openJoin(){document.getElementById('joinModal').classList.add('active')}
-function closeJoin(){document.getElementById('joinModal').classList.remove('active')}
-function openBrand(){alert('For Brands: Email us at brands@creatorhub.rw — Turabahuza naba creators bakomeye muri Rwanda!')}
-function submitJoin(){
- let n=document.getElementById('name').value;
- if(!n){alert('Shyiramo izina!');return}
- alert('Murakaza neza '+n+'! 🎉 Account yawe iri gukorwa. Turakwandikira vuba!');
- closeJoin();
+async function load(){
+ const user='glie2-focus'; const repo='Creatorhub';
+ try{
+  const res=await fetch(`https://api.github.com/repos/${user}/${repo}/contents`);
+  const files=await res.json();
+  const imgs=files.filter(f=>f.name.match(/\.(jpg|jpeg|png|webp)$/i));
+  const grid=document.getElementById('grid');
+  const loader=document.getElementById('loader');
+  loader.style.display='none';
+  const titles=['LOVE OR MONEY? ❤️','5 SECONDS MAKE ME LAUGH 😂','1M RWF FIRST MOVE? 💰','PAIN NEVER ENDS..','DEAR PROBLEMS..','MORE MONEY BIGGER DREAMS','MAKE ME LAUGH CHALLENGE','STREET INTERVIEW KIGALI','GLIE UNFILTERED OFFICIAL 👑'];
+  imgs.forEach((f,i)=>{
+    const d=document.createElement('div'); d.className='card';
+    d.innerHTML=`<img src="${f.download_url}" loading="lazy"><div class="t"><span class="tag">${titles[i%titles.length]}</span><h4>${f.name.substring(0,15)}...</h4><small>GLIE UNFILTERED • No Filter</small></div>`;
+    d.onclick=()=>window.open(f.download_url,'_blank');
+    grid.appendChild(d);
+  });
+ }catch(e){document.getElementById('loader').innerHTML='Fungura GitHub Pages: https://glie2-focus.github.io/Creatorhub/';}
 }
+load();
 </script>
 </body>
 </html>
