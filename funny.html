@@ -85,30 +85,110 @@ function createPost(){
  if(!currentUser) return alert('Banza ukore account! Kanda LOGIN hejuru 👆'), document.getElementById('loginModal').style.display='flex';
  const title=document.getElementById('title').value.trim();
  if(!title) return alert('Shyiramo umutwe!');
- const file=document.getElementById('fileInput').files[0];
- let media=document.getElementById('url').value.trim();
- if(file){media=URL.createObjectURL(file)}
- if(!media) return alert('Hitamo ifoto/video cyangwa shyiramo link!');
- const p={id:Date.now(),user:currentUser.name,title,desc:document.getElementById('desc').value,type:document.getElementById('type').value,media,likes:0,time:'now'};
- posts.unshift(p);
- localStorage.setItem('glie_posts',JSON.stringify(posts));
- render(); document.getElementById('title').value='';document.getElementById('desc').value='';document.getElementById('url').value='';
- alert('Post yawe yashyizweho! 🔥👑');
-}
+ const file=document.getElementById('fileInput').files[0];<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GLIE FUNNY HUB 👑 KIGALI</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#FFC400;--bg:#080808;--card:#151515;--line:#222}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Inter}
+header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(0,0,0,.95);z-index:10}
+.logo{font-family:Anton;font-size:22px}.logo b{color:var(--gold)}
+.btn{background:var(--gold);color:#000;border:0;padding:10px 18px;border-radius:999px;font-weight:900;cursor:pointer}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.main{max-width:1200px;margin:auto;padding:16px;display:grid;grid-template-columns:340px 1fr 320px;gap:16px}
+input,textarea,select{width:100%;padding:12px;border-radius:12px;border:1px solid #333;background:#000;color:#fff;margin:6px 0;outline:none}
+.post img,.post video{width:100%;max-height:500px;object-fit:cover;display:block;background:#000}
+.post .info{padding:12px}.actions{display:flex;gap:8px;padding:0 12px 12px;flex-wrap:wrap}
+.actions button{background:#222;border:0;color:#fff;padding:8px 12px;border-radius:999px;cursor:pointer;font-size:12px;font-weight:700}
+.actions button:hover{background:var(--gold);color:#000}
+.user{font-family:Anton;color:var(--gold)} .muted{color:#666;font-size:11px}
+.chatbox{height:75vh;display:flex;flex-direction:column;position:sticky;top:80px}
+.chatmsgs{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px}
+.chatmsgs .m{background:#000;border:1px solid #222;padding:8px 10px;border-radius:12px;font-size:13px}
+.badge{background:#00ff00;color:#000;font-size:9px;padding:3px 6px;border-radius:999px;font-weight:900;vertical-align:middle}
+@media(max-width:1000px){.main{grid-template-columns:1fr}.chatbox{height:400px;position:relative;top:0}}
+</style>
+</head>
+<body>
+<header><div class="logo">👑 GLIE <b>FUNNY HUB</b> <span class="badge">LIVE KIGALI</span></div><div id="authBox"><button class="btn" onclick="openLogin()">LOGIN / JOIN</button></div></header>
 
-function render(){
- const feed=document.getElementById('feed'); feed.innerHTML='';
- posts.forEach(p=>{
-  const d=document.createElement('div'); d.className='card post';
-  d.innerHTML=`<div style="padding:12px;display:flex;justify-content:space-between"><span class="user">👑 ${p.user}</span><span style="color:#666;font-size:11px">${p.time}</span></div>
-  ${p.type==='video' && p.media.includes('.mp4') || p.media.startsWith('blob:') && p.type==='video' ? `<video src="${p.media}" controls></video>` : p.media.includes('youtube')||p.media.includes('youtu.be')? `<iframe width="100%" height="300" src="${p.media.replace('watch?v=','embed/')}" frameborder="0" allowfullscreen></iframe>` : `<img src="${p.media}">`}
-  <div class="info"><h3 style="font-family:Anton;margin:0">${p.title}</h3><p style="color:#999;font-size:13px;margin:6px 0">${p.desc||''}</p></div>
-  <div class="actions"><button onclick="like(${p.id})">❤️ ${p.likes} Like</button><button>💬 Comment</button><button>↗️ Share</button></div>`;
-  feed.appendChild(d);
- })
+<div class="main">
+<!-- CREATE -->
+<div class="card" style="padding:16px;height:fit-content;position:sticky;top:80px">
+<h3 style="font-family:Anton;margin:0 0 10px">CREATE POST 😂</h3>
+<input id="title" placeholder="Umutwe w'inkuru - ex: Mbega comedie!">
+<textarea id="desc" placeholder="Sobanura..."></textarea>
+<select id="type"><option value="photo">Photo</option><option value="video">Video</option></select>
+<input id="url" placeholder="Image/Video URL - paste link hano">
+<small style="color:#666">Tip: Koresha https://imgur.com upload -> Copy Link</small>
+<button class="btn" style="width:100%;margin-top:12px" onclick="createPost()">🚀 POST NOW</button>
+<hr style="border-color:var(--line);margin:16px 0">
+<button onclick="adminLogin()" style="background:transparent;color:#555;border:0;cursor:pointer;font-size:11px;width:100%">🔐 ADMIN PANEL (wowe gusa)</button>
+<div id="adminPanel" style="display:none;margin-top:10px;border-top:1px solid #333;padding-top:10px"><b style="color:var(--gold)">ADMIN - Siba ibitagikenewe</b><div id="adminList" style="margin-top:8px"></div></div>
+</div>
+
+<!-- FEED -->
+<div id="feed" style="display:grid;gap:16px"></div>
+
+<!-- CHAT -->
+<div class="card chatbox"><div style="padding:12px;border-bottom:1px solid var(--line);font-family:Anton">LIVE CHAT 💬 ABANTU BOSE</div><div class="chatmsgs" id="chatMsgs"></div><div style="padding:10px;display:flex;gap:6px;border-top:1px solid var(--line)"><input id="chatInput" placeholder="Tukana hano..."><button class="btn" onclick="sendChat()">➤</button></div></div>
+</div>
+
+<div id="loginModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;align-items:center;justify-content:center;padding:16px"><div class="card" style="padding:20px;max-width:360px;width:100%"><h2 style="font-family:Anton;margin:0 0 10px">JOIN GLIE 👑</h2><input id="username" placeholder="Izina ryawe - ex: King Glie"><button class="btn" style="width:100%;margin-top:10px" onclick="doLogin()">JOIN NOW</button><button style="width:100%;margin-top:8px;background:transparent;color:#777;border:0" onclick="closeLogin()">Close</button></div></div>
+
+<script>
+let currentUser = JSON.parse(localStorage.getItem('glie_user')||'null');
+let posts = JSON.parse(localStorage.getItem('glie_posts')||'[]');
+let chats = JSON.parse(localStorage.getItem('glie_chats')||'[]');
+function openLogin(){document.getElementById('loginModal').style.display='flex'}
+function closeLogin(){document.getElementById('loginModal').style.display='none'}
+function updateAuth(){if(currentUser){document.getElementById('authBox').innerHTML=`👋 <b>${currentUser.name}</b> <button class="btn" style="background:#222;color:#fff;margin-left:8px" onclick="logout()">Logout</button>`}}
+function doLogin(){const n=document.getElementById('username').value.trim();if(!n)return alert('Shyiramo izina!');currentUser={name:n};localStorage.setItem('glie_user',JSON.stringify(currentUser));closeLogin();updateAuth();render();}
+function logout(){localStorage.removeItem('glie_user');location.reload()}
+function createPost(){
+ if(!currentUser)return openLogin();
+ const title=document.getElementById('title').value.trim(),desc=document.getElementById('desc').value,url=document.getElementById('url').value.trim(),type=document.getElementById('type').value;
+ if(!title||!url)return alert('Uzuza umutwe na URL!');
+ const p={id:Date.now(),user_name:currentUser.name,title,description:desc,media_url:url,media_type:type,likes:0,comments:[],created_at:new Date().toISOString()};
+ posts.unshift(p);localStorage.setItem('glie_posts',JSON.stringify(posts));
+ document.getElementById('title').value='';document.getElementById('url').value='';document.getElementById('desc').value='';
+ render();alert('Posted! 🔥');
 }
-function like(id){const p=posts.find(x=>x.id===id);p.likes++;localStorage.setItem('glie_posts',JSON.stringify(posts));render()}
-updateAuth(); render();
+function render(){
+ const feed=document.getElementById('feed');feed.innerHTML='';
+ if(posts.length===0)feed.innerHTML='<div class="card" style="padding:30px;text-align:center;color:#666">Nta post irabaho - Ba uwa mbere! 😂</div>';
+ posts.forEach(p=>{
+  const el=document.createElement('div');el.className='card post';
+  const isVideo=p.media_type==='video'||p.media_url.includes('.mp4')||p.media_url.includes('video');
+  const media=isVideo?`<video src="${p.media_url}" controls></video>`:p.media_url.includes('youtube')||p.media_url.includes('youtu.be')?`<iframe width="100%" height="320" src="${p.media_url.replace('watch?v=','embed/').replace('youtu.be/','youtube.com/embed/')}" frameborder="0" allowfullscreen></iframe>`:`<img src="${p.media_url}" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Not+Found'">`;
+  el.innerHTML=`<div style="padding:12px;display:flex;justify-content:space-between"><span class="user">👑 ${p.user_name}</span><span class="muted">${new Date(p.created_at).toLocaleString()}</span></div>${media}<div class="info"><h3 style="font-family:Anton;margin:0">${p.title}</h3><p style="color:#999;font-size:13px;margin:6px 0">${p.description||''}</p></div><div class="actions"><button onclick="likePost(${p.id})">❤️ ${p.likes} Like</button><button onclick="commentPost(${p.id})">💬 ${p.comments.length} Comment</button><button onclick="sharePost('${p.media_url}')">↗️ Share</button></div><div style="padding:0 12px 12px">${p.comments.map(c=>`<div style="background:#000;border:1px solid #222;padding:6px 10px;border-radius:10px;margin:4px 0;font-size:12px"><b style="color:var(--gold)">${c.user}:</b> ${c.text}</div>`).join('')}</div>`;
+  feed.appendChild(el);
+ });
+ const adminList=document.getElementById('adminList');if(adminList){adminList.innerHTML=posts.map(p=>`<div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;margin:6px 0;background:#000;padding:6px 8px;border-radius:8px">${p.title.substring(0,25)} <button onclick="deletePost(${p.id})" style="background:red;color:#fff;border:0;padding:4px 8px;border-radius:6px;cursor:pointer">Siba</button></div>`).join('')}
+ renderChat();
+}
+function likePost(id){const p=posts.find(x=>x.id===id);if(p){p.likes++;localStorage.setItem('glie_posts',JSON.stringify(posts));render()}}
+function commentPost(id){
+ if(!currentUser)return openLogin();
+ const text=prompt('Andika comment yawe:');if(!text)return;
+ const p=posts.find(x=>x.id===id);if(p){p.comments.push({user:currentUser.name,text,at:new Date().toISOString()});localStorage.setItem('glie_posts',JSON.stringify(posts));render()}
+}
+function sharePost(url){navigator.clipboard.writeText(url);alert('Link copied! Share kuri WhatsApp!')}
+function deletePost(id){if(confirm('Ushaka gusiba iyi post?')){posts=posts.filter(x=>x.id!==id);localStorage.setItem('glie_posts',JSON.stringify(posts));render()}}
+function adminLogin(){const pass=prompt('Admin password:');if(pass==='glie2026'){document.getElementById('adminPanel').style.display='block';alert('Admin ON 👑 Ushobora gusiba ibitagikenewe!')}else alert('Wrong password!')}
+function renderChat(){const box=document.getElementById('chatMsgs');box.innerHTML=chats.slice(-50).map(m=>`<div class="m"><b style="color:var(--gold)">${m.user}:</b> ${m.text} <span class="muted" style="float:right">${new Date(m.at).toLocaleTimeString()}</span></div>`).join('');box.scrollTop=box.scrollHeight}
+function sendChat(){
+ if(!currentUser)return openLogin();
+ const input=document.getElementById('chatInput');const text=input.value.trim();if(!text)return;
+ chats.push({user:currentUser.name,text,at:new Date().toISOString()});localStorage.setItem('glie_chats',JSON.stringify(chats));input.value='';renderChat();
+}
+document.getElementById('chatInput').addEventListener('keypress',e=>{if(e.key==='Enter')sendChat()});
+updateAuth();render();
+// fake realtime - refresh every 2 sec
+setInterval(()=>{posts=JSON.parse(localStorage.getItem('glie_posts')||'[]');chats=JSON.parse(localStorage.getItem('glie_chats')||'[]');renderChat()},2000);
 </script>
 </body>
 </html>
