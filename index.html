@@ -1,93 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>King Studio | Photography & Videography</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KING STUDIO | Kigali Photography</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#090909;color:#fff;font-family:Arial,sans-serif}
-header{height:82px;display:flex;align-items:center;justify-content:space-between;padding:10px 5%;background:#090909;border-bottom:1px solid #222;position:sticky;top:0;z-index:10}
-.logo{height:62px;width:92px;object-fit:contain;object-position:center;border-radius:4px}
-nav a{color:#ddd;text-decoration:none;margin:0 13px;font-size:14px}nav a:hover{color:#f4bf3f}
-.btn{background:#f4bf3f;color:#111;border:0;padding:13px 20px;border-radius:6px;font-weight:700;text-decoration:none;display:inline-block}
-.hero{min-height:520px;display:flex;align-items:center;padding:60px 7%;background:linear-gradient(90deg,#050505 20%,rgba(5,5,5,.5)),url('assets/featured-photo.jpg') center/cover}
-.heroText{max-width:600px}.eyebrow{color:#f4bf3f;letter-spacing:4px;font-size:13px}.hero h1{font:700 clamp(44px,7vw,82px)/.95 Georgia,serif;margin:18px 0}.hero h1 span{color:#f4bf3f}.hero p{color:#ccc;font-size:17px;line-height:1.6}
-section{padding:58px 7%}.title{font:700 38px Georgia,serif;margin:0 0 25px}.sub{color:#999}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{height:260px;border:1px solid #333;border-radius:12px;overflow:hidden;position:relative;background:#151515}.card img{width:100%;height:100%;object-fit:cover;opacity:.72}.cardText{position:absolute;left:22px;bottom:20px}.card h3{font:700 30px Georgia,serif;margin:0 0 5px}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.gallery img,.gallery video{width:100%;height:300px;object-fit:cover;border-radius:8px;background:#151515}.upload{max-width:650px;background:#111;border:1px dashed #555;padding:25px;border-radius:10px}.upload input,.upload textarea{width:100%;margin:8px 0;padding:12px;background:#1b1b1b;color:#fff;border:1px solid #333;border-radius:5px}.upload button{margin-top:8px}.empty{color:#777}
-footer{text-align:center;border-top:1px solid #222;padding:30px;color:#777}
-@media(max-width:800px){header{height:auto;gap:10px;flex-wrap:wrap}nav{order:3;width:100%;padding:7px 0;overflow:auto;white-space:nowrap}.cards{grid-template-columns:1fr}.hero{min-height:500px}}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#080808;color:#fff;font-family:Inter,Arial,sans-serif}
+nav{display:flex;justify-content:space-between;align-items:center;padding:12px 5%;background:#000;position:sticky;top:0;z-index:99;border-bottom:1px solid #1a1a1a}
+nav img{height:48px}nav .links a{color:#999;text-decoration:none;margin-left:20px;font-size:13px;letter-spacing:1px}nav .links a:hover{color:#d4af37}
+.hero{height:88vh;display:flex;align-items:center;padding:0 5%;position:relative;background:#000;overflow:hidden}
+.hero-bg{position:absolute;inset:0;opacity:.65;background:url('photo1.jpg') center/cover}
+.hero-content{position:relative;z-index:2;max-width:620px}
+.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;font-family:Georgia,serif}
+.hero h1 span{color:#d4af37}
+.btn{display:inline-block;margin-top:22px;padding:15px 32px;border-radius:30px;text-decoration:none;font-weight:700}
+.gold{background:#d4af37;color:#000}.outline{border:1px solid #fff;color:#fff;margin-left:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.grid img{width:100%;height:400px;object-fit:cover;border-radius:14px;transition:.3s}
+.grid img:hover{transform:scale(1.02)}
+section{padding:60px 5%}
+footer{text-align:center;padding:40px 5%;color:#666;border-top:1px solid #222}
+.wa{position:fixed;bottom:22px;right:22px;background:#25D366;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.6)}
 </style>
 </head>
 <body>
-<header>
-<img class="logo" src="assets/king-logo.jpg" alt="King Studio logo">
-<nav><a href="#home">Home</a><a href="#photos">Photos</a><a href="#videos">Videos</a><a href="#services">Services</a><a href="#upload">Upload</a><a href="#contact">Contact</a></nav>
-<a class="btn" href="#contact">Book Now</a>
-</header>
-
-<section class="hero" id="home">
-<div class="heroText">
-<div class="eyebrow">KING STUDIO</div>
-<h1>Capturing your <span>special moments</span> forever.</h1>
-<p>Professional photography and videography for portraits, weddings, events, sports and creative projects.</p>
-<a class="btn" href="#photos">View Gallery →</a>
-</div>
-</section>
-
-<section id="services">
-<h2 class="title">What We Do</h2><p class="sub">Professional visual storytelling by King Studio.</p><br>
-<div class="cards">
-<div class="card"><img src="assets/featured-photo.jpg"><div class="cardText"><h3>Photos</h3><span>Portraits & events</span></div></div>
-<div class="card"><img src="assets/featured-photo.jpg"><div class="cardText"><h3>Videos</h3><span>Creative video production</span></div></div>
-<div class="card"><img src="assets/featured-photo.jpg"><div class="cardText"><h3>Studio</h3><span>Professional studio sessions</span></div></div>
-</div>
-</section>
-
-<section id="photos">
-<h2 class="title">Featured Gallery</h2>
-<div class="gallery" id="photoGrid">
-<img src="assets/featured-photo.jpg" alt="King Studio portrait">
-</div>
-</section>
-
-<section id="videos">
-<h2 class="title">Videos</h2>
-<div class="gallery" id="videoGrid"></div>
-<p id="noVideo" class="empty">Your uploaded videos will appear here.</p>
-</section>
-
-<section id="upload">
-<h2 class="title">Upload Your Work</h2>
-<div class="upload">
-<input id="file" type="file" accept="image/*,video/*">
-<input id="caption" placeholder="Title / caption">
-<button class="btn" onclick="uploadWork()">Publish</button>
-<p class="sub">Prototype upload: content appears immediately in the gallery on this device. A live cloud version can be connected next.</p>
-</div>
-</section>
-
-<section id="contact">
-<h2 class="title">Book King Studio</h2>
-<p class="sub">Photography • Videography • Events • Portraits</p>
-<a class="btn" href="tel:+250780200034">Call / Book</a>
-</section>
-
-<footer>© 2026 KING STUDIO — Photography & Videography</footer>
-<script>
-function uploadWork(){
- const f=document.getElementById('file').files[0];
- const title=document.getElementById('caption').value||'King Studio';
- if(!f){alert('Choose a photo or video first.');return;}
- const url=URL.createObjectURL(f);
- if(f.type.startsWith('video')){
-  const v=document.createElement('video');v.src=url;v.controls=true;
-  document.getElementById('videoGrid').prepend(v);
-  document.getElementById('noVideo').style.display='none';
- }else{
-  const img=document.createElement('img');img.src=url;img.alt=title;
-  document.getElementById('photoGrid').prepend(img);
- }
-}
-</script>
+<nav><div style="display:flex;align-items:center;gap:10px"><img src="logo.jpg"><b style="letter-spacing:2px">KING STUDIO</b></div><div class="links"><a href="#">HOME</a><a href="#work">PHOTOS</a><a href="funny.html" style="color:#d4af37">FUNNY HUB 😂</a></div></nav>
+<div class="hero"><div class="hero-bg"></div><div class="hero-content"><h1>Capturing your <span>special</span> moments forever.</h1><p style="color:#ccc;margin-top:14px;font-size:18px">Kigali's royal studio - weddings, graduations, couples, events. Book now on WhatsApp!</p><a class="btn gold" href="https://wa.me/250786301017?text=Muraho%20King%20Studio%20%F0%9F%91%91%20Ndashaka%20gufata%20ifoto">Book Now - 0786301017</a><a class="btn outline" href="#work">View Gallery</a></div></div>
+<section id="work"><h2 style="text-align:center;font-size:36px;font-family:Georgia">Our Latest Work</h2><p style="text-align:center;color:#888;margin:10px 0 30px">Real clients - King Studio Kigali - 2026</p><div class="grid">
+<img src="photo1.jpg"><img src="photo2.jpg"><img src="photo3.jpg"><img src="photo4.jpg"><img src="photo5.jpg"><img src="photo6.jpg"><img src="photo7.jpg">
+</div></section>
+<footer>© 2026 KING STUDIO • Kigali, Rwanda • WhatsApp 0786301017<br><a href="funny.html" style="color:#d4af37;text-decoration:none">Visit Funny Hub →</a></footer>
+<a class="wa" href="https://wa.me/250786301017">💬</a>
 </body>
 </html>
