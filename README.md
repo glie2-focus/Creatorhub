@@ -1,2 +1,0 @@
-# Creatorhub
-For entertainment 
