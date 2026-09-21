@@ -1,81 +1,93 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GLIE UNFILTERED | @glie_unfiltered</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@800;900&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>King Studio | Photography & Videography</title>
 <style>
-:root{--gold:#FFC400;--bg:#050505;--line:#222}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Inter,sans-serif}
-header{height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(0,0,0,.93);backdrop-filter:blur(10px);z-index:9}
-.logo{font-family:Anton;font-size:20px;letter-spacing:.5px}.logo b{color:var(--gold)}
-.btn{background:var(--gold);color:#000;border:0;padding:11px 18px;border-radius:999px;font-weight:900;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px}
-.btn-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
-.hero{max-width:1200px;margin:auto;padding:28px 14px;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
-.hero h1{font-family:Anton;font-size:58px;line-height:.9;margin:0;text-transform:uppercase}.hero h1 span{color:var(--gold)}
-.grid{max-width:1200px;margin:auto;padding:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#111;transition:.2s}.card:hover{border-color:var(--gold);transform:translateY(-2px)}
-.card img{width:100%;height:300px;object-fit:cover;display:block}
-.card .t{padding:12px}.tag{color:var(--gold);font-weight:900;font-size:11px;letter-spacing:.5px}.card h4{margin:4px 0 0 0;font-family:Anton;font-size:17px}
-.qr{background:#fff;border-radius:22px;padding:14px;text-align:center;color:#000}
-#loader{text-align:center;padding:28px;color:var(--gold);font-weight:900}
-footer{border-top:1px solid var(--line);margin-top:40px;padding:28px;text-align:center;color:#777;font-size:13px}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.hero h1{font-size:42px}.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.grid{grid-template-columns:1fr}}
+*{box-sizing:border-box}body{margin:0;background:#090909;color:#fff;font-family:Arial,sans-serif}
+header{height:82px;display:flex;align-items:center;justify-content:space-between;padding:10px 5%;background:#090909;border-bottom:1px solid #222;position:sticky;top:0;z-index:10}
+.logo{height:62px;width:92px;object-fit:contain;object-position:center;border-radius:4px}
+nav a{color:#ddd;text-decoration:none;margin:0 13px;font-size:14px}nav a:hover{color:#f4bf3f}
+.btn{background:#f4bf3f;color:#111;border:0;padding:13px 20px;border-radius:6px;font-weight:700;text-decoration:none;display:inline-block}
+.hero{min-height:520px;display:flex;align-items:center;padding:60px 7%;background:linear-gradient(90deg,#050505 20%,rgba(5,5,5,.5)),url('assets/featured-photo.jpg') center/cover}
+.heroText{max-width:600px}.eyebrow{color:#f4bf3f;letter-spacing:4px;font-size:13px}.hero h1{font:700 clamp(44px,7vw,82px)/.95 Georgia,serif;margin:18px 0}.hero h1 span{color:#f4bf3f}.hero p{color:#ccc;font-size:17px;line-height:1.6}
+section{padding:58px 7%}.title{font:700 38px Georgia,serif;margin:0 0 25px}.sub{color:#999}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{height:260px;border:1px solid #333;border-radius:12px;overflow:hidden;position:relative;background:#151515}.card img{width:100%;height:100%;object-fit:cover;opacity:.72}.cardText{position:absolute;left:22px;bottom:20px}.card h3{font:700 30px Georgia,serif;margin:0 0 5px}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.gallery img,.gallery video{width:100%;height:300px;object-fit:cover;border-radius:8px;background:#151515}.upload{max-width:650px;background:#111;border:1px dashed #555;padding:25px;border-radius:10px}.upload input,.upload textarea{width:100%;margin:8px 0;padding:12px;background:#1b1b1b;color:#fff;border:1px solid #333;border-radius:5px}.upload button{margin-top:8px}.empty{color:#777}
+footer{text-align:center;border-top:1px solid #222;padding:30px;color:#777}
+@media(max-width:800px){header{height:auto;gap:10px;flex-wrap:wrap}nav{order:3;width:100%;padding:7px 0;overflow:auto;white-space:nowrap}.cards{grid-template-columns:1fr}.hero{min-height:500px}}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">👑 GU <b>GLIE UNFILTERED</b></div>
-<a class="btn btn-ig" href="https://www.instagram.com/glie_unfiltered" target="_blank">📸 Follow</a>
+<img class="logo" src="assets/king-logo.jpg" alt="King Studio logo">
+<nav><a href="#home">Home</a><a href="#photos">Photos</a><a href="#videos">Videos</a><a href="#services">Services</a><a href="#upload">Upload</a><a href="#contact">Contact</a></nav>
+<a class="btn" href="#contact">Book Now</a>
 </header>
 
-<div class="hero">
-<div>
-<h1>REAL PEOPLE.<br><span>REAL STORIES.</span><br>NO FILTER.</h1>
-<p style="color:#999;margin:12px 0 18px 0">Street Interviews • Comedy • Money Talks — Kigali. Follow @glie_unfiltered</p>
-<div style="display:flex;gap:10px;flex-wrap:wrap">
-<a class="btn btn-ig" href="https://www.instagram.com/glie_unfiltered" target="_blank">📸 @GLIE_UNFILTERED</a>
-<a class="btn" href="#grid">🎬 WATCH NOW</a>
+<section class="hero" id="home">
+<div class="heroText">
+<div class="eyebrow">KING STUDIO</div>
+<h1>Capturing your <span>special moments</span> forever.</h1>
+<p>Professional photography and videography for portraits, weddings, events, sports and creative projects.</p>
+<a class="btn" href="#photos">View Gallery →</a>
 </div>
-</div>
-<div class="qr">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://www.instagram.com/glie_unfiltered" style="width:100%;max-width:230px;border-radius:14px;display:block;margin:auto">
-<p style="font-family:Anton;font-size:20px;margin:10px 0 0 0">@GLIE_UNFILTERED</p>
-<p style="font-size:11px;color:#666;margin:4px 0 0 0">SCAN TO FOLLOW 👑</p>
-</div>
-</div>
+</section>
 
-<div id="loader">⏳ Loading your 9 photos... 👑</div>
-<div id="grid" class="grid"></div>
-
-<div style="max-width:400px;margin:36px auto;padding:18px;border:1px solid #222;border-radius:20px;background:#111;text-align:center">
-<h3 style="font-family:Anton;margin:0 0 8px 0">JOIN GLIE FAMILY 👑</h3>
-<input id="n" placeholder="Izina ryawe" style="width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#000;color:#fff;margin:8px 0">
-<button class="btn" style="width:100%;justify-content:center" onclick="alert('Murakaza neza '+(document.getElementById('n').value||'King')+' muri GLIE FAMILY! 👑🔥 Follow @glie_unfiltered')">JOIN NOW</button>
-<p style="font-size:11px;color:#666;margin-top:8px">No spam. Real stories only.</p>
+<section id="services">
+<h2 class="title">What We Do</h2><p class="sub">Professional visual storytelling by King Studio.</p><br>
+<div class="cards">
+<div class="card"><img src="assets/featured-photo.jpg"><div class="cardText"><h3>Photos</h3><span>Portraits & events</span></div></div>
+<div class="card"><img src="assets/featured-photo.jpg"><div class="cardText"><h3>Videos</h3><span>Creative video production</span></div></div>
+<div class="card"><img src="assets/featured-photo.jpg"><div class="cardText"><h3>Studio</h3><span>Professional studio sessions</span></div></div>
 </div>
+</section>
 
-<footer>© 2026 GLIE UNFILTERED 👑 • <a href="https://www.instagram.com/glie_unfiltered" style="color:var(--gold);text-decoration:none">@glie_unfiltered</a> • Kigali<br>Same Vision Bigger Dreams</footer>
+<section id="photos">
+<h2 class="title">Featured Gallery</h2>
+<div class="gallery" id="photoGrid">
+<img src="assets/featured-photo.jpg" alt="King Studio portrait">
+</div>
+</section>
 
+<section id="videos">
+<h2 class="title">Videos</h2>
+<div class="gallery" id="videoGrid"></div>
+<p id="noVideo" class="empty">Your uploaded videos will appear here.</p>
+</section>
+
+<section id="upload">
+<h2 class="title">Upload Your Work</h2>
+<div class="upload">
+<input id="file" type="file" accept="image/*,video/*">
+<input id="caption" placeholder="Title / caption">
+<button class="btn" onclick="uploadWork()">Publish</button>
+<p class="sub">Prototype upload: content appears immediately in the gallery on this device. A live cloud version can be connected next.</p>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="title">Book King Studio</h2>
+<p class="sub">Photography • Videography • Events • Portraits</p>
+<a class="btn" href="tel:+250780200034">Call / Book</a>
+</section>
+
+<footer>© 2026 KING STUDIO — Photography & Videography</footer>
 <script>
-async function load(){
- try{
-  const r=await fetch('https://api.github.com/repos/glie2-focus/Creatorhub/contents');
-  const files=await r.json();
-  const imgs=files.filter(f=>/\.(jpg|jpeg|png|webp)$/i.test(f.name) && f.name!=='index.html');
-  const grid=document.getElementById('grid');
-  document.getElementById('loader').style.display='none';
-  const titles=['LOVE OR MONEY? ❤️','5 SECONDS MAKE ME LAUGH 😂','1M RWF FIRST MOVE? 💰','PAIN NEVER ENDS..','DEAR PROBLEMS..','MORE MONEY BIGGER DREAMS','STREET INTERVIEW KIGALI','GLIE UNFILTERED 👑','NO FILTER CHALLENGE'];
-  imgs.forEach((f,i)=>{
-    const c=document.createElement('div'); c.className='card';
-    c.innerHTML=`<img src="${f.download_url}" loading="lazy"><div class="t"><div class="tag">${titles[i%titles.length]}</div><h4>GLIE UNFILTERED</h4></div>`;
-    c.onclick=()=>window.open('https://www.instagram.com/glie_unfiltered','_blank');
-    grid.appendChild(c);
-  });
- }catch(e){document.getElementById('loader').innerHTML='Fungura: https://glie2-focus.github.io/Creatorhub/';}
+function uploadWork(){
+ const f=document.getElementById('file').files[0];
+ const title=document.getElementById('caption').value||'King Studio';
+ if(!f){alert('Choose a photo or video first.');return;}
+ const url=URL.createObjectURL(f);
+ if(f.type.startsWith('video')){
+  const v=document.createElement('video');v.src=url;v.controls=true;
+  document.getElementById('videoGrid').prepend(v);
+  document.getElementById('noVideo').style.display='none';
+ }else{
+  const img=document.createElement('img');img.src=url;img.alt=title;
+  document.getElementById('photoGrid').prepend(img);
+ }
 }
-load();
 </script>
 </body>
 </html>
